@@ -1,0 +1,51 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+    simple:
+        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    complex:
+        format: "%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)d - %(message)s"
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: complex
+        stream: ext://sys.stdout
+
+    debug_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: complex
+        filename: src/log/debug.log
+        maxBytes: 10485760 # 10MB
+        backupCount: 5
+        encoding: utf8
+
+    info_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: complex
+        filename: src/log/info.log
+        maxBytes: 10485760 # 10MB
+        backupCount: 5
+        encoding: utf8
+
+    error_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: ERROR
+        formatter: complex
+        filename: src/log/errors.log
+        maxBytes: 10485760 # 10MB
+        backupCount: 5
+        encoding: utf8
+
+loggers:
+    ml_logger:
+        level: DEBUG
+        handlers: [console, info_file_handler, error_file_handler, debug_file_handler]
+        propagate: no
+
+root:
+    level: DEBUG
+    handlers: [console, info_file_handler, error_file_handler, debug_file_handler]
