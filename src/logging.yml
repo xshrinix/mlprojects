@@ -17,7 +17,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
         level: DEBUG
         formatter: complex
-        filename: src/log/debug.log
+        filename: log/debug.log
         maxBytes: 10485760 # 10MB
         backupCount: 5
         encoding: utf8
@@ -26,7 +26,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
         level: INFO
         formatter: complex
-        filename: src/log/info.log
+        filename: log/info.log
         maxBytes: 10485760 # 10MB
         backupCount: 5
         encoding: utf8
@@ -35,7 +35,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
         level: ERROR
         formatter: complex
-        filename: src/log/errors.log
+        filename: log/errors.log
         maxBytes: 10485760 # 10MB
         backupCount: 5
         encoding: utf8
